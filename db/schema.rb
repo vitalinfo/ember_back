@@ -16,7 +16,8 @@ ActiveRecord::Schema.define(version: 20170502204531) do
     t.integer  "user_id"
     t.string   "title"
     t.text     "description"
-    t.datetime "start_at"
+    t.date     "start_at"
+    t.integer  "ordinal"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["user_id", "start_at"], name: "index_tasks_on_user_id_and_start_at"
