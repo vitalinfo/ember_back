@@ -9,6 +9,6 @@ use Rack::Cors do
   # allow all origins in development
   allow do
     origins '*'
-    resource '*', headers: :any, methods: [:get, :post, :options]
+    resource '*', headers: :any, methods: [:get, :post, :options, :put, :destroy]
   end
 end

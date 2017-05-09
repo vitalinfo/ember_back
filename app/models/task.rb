@@ -5,11 +5,16 @@ class Task < ApplicationRecord
 
   validate :start_at_in_future, on: :create
   before_validation :set_ordinal
+  after_initialize :set_defaults
 
   private
 
+  def set_defaults
+    self.completed ||= false
+  end
+
   def set_ordinal
-    return unless start_at
+    return if !start_at || ordinal
     self.ordinal = Task.where(user: user, start_at: start_at).maximum(:ordinal).to_i + 1
   end
 
