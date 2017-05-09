@@ -14,8 +14,8 @@ class Task < ApplicationRecord
   end
 
   def set_ordinal
-    return if !start_at || ordinal
-    self.ordinal = Task.where(user: user, start_at: start_at).maximum(:ordinal).to_i + 1
+    return unless start_at
+    self.ordinal ||= Task.where(user: user, start_at: start_at).maximum(:ordinal).to_i + 1
   end
 
   def start_at_in_future

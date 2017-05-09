@@ -1,7 +1,7 @@
 class Api::V1::TasksController < Api::V1::BaseController
 
   def index
-    render_json_success current_user.tasks
+    render_json_success current_user.tasks.order(:start_at)
   end
 
   def create
